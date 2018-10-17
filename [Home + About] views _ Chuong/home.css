@@ -1,0 +1,64 @@
+body{
+    border: 5px solid red;
+    height: auto;
+    //Tested height for best view below!
+    //height: 1100px;
+    width: 1000px;
+    margin: 0 auto 0;
+    font-family: Sans-serif, "Lucia Console";
+}
+
+
+#header{
+    display: block;
+    position: relative;
+    border: 2px solid yellow;
+}
+
+<!---Not working, why--->
+#content, #textbox{
+    border-collapse: collapse;
+}
+
+#content{
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 75%;
+    border: 1px solid salmon;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.box{
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    //height: 260px;
+    height: 33%;
+    width: auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.item{
+    display: inline-block;
+    position: relative;
+    height: 60%;
+    width: 20%;
+    border: 1px solid yellowgreen;
+    margin: 2%;
+    text-align: center;
+}
+
+#footer{
+    display: block;
+    position: relative;
+    border: 2px solid yellow;
+}
