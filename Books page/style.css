@@ -1,0 +1,48 @@
+#search input[type=text] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+    width: 70%;
+}
+
+#sort{
+    float: right;
+    width: 50px;
+    height: 25px;
+
+}
+#line{
+    width: 100%;
+    height: 40px;
+}
+
+#book{
+    width: 22%;
+    height: 40px;
+    background-color: black; 
+    color: white;
+}
+#ima{
+    width: 100%;
+    height: 25px;
+}
+#desc{
+    width: 100%;
+}
+#next
+{
+    background-color: palevioletred;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
