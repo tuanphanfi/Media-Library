@@ -1,0 +1,81 @@
+extend includes/layout.pug
+block content
+    div#book-search
+        input(type="text" placeholder="Search..")
+    div#book-sort
+        button(onclick="myFunction()" class="dropbtn") Dropdown
+        div(id="myDropdown" class="dropdown-content")
+            a(href="#") From A to Z
+            a(href="#") From Z to A
+    div(id="content")
+        //div(id="line line1")
+        div#book-line
+            a(href="#")
+                //div(id="book book1")
+                div#book-line
+                    //div(id="ima image1")
+                    div#book-ima
+                        img(src="")
+                    //div(id="desc desc1")
+                    div#book-desc
+                        p Name:
+                        p Author:
+                        p Year:
+                a(href="#")   
+                //div(id="book book2")
+                div#book-book
+                    //div(id="ima image2")
+                    div#book-ima
+                        img(src="")
+                    //div(id="desc desc2")
+                    div#book-desc
+                        p Name:
+                        p Author:
+                        p Year:
+            a(href="#")   
+                //div(id="book book3")
+                div#book-book
+                    //div(id="ima image3")
+                    div#book-ima
+                        img(src="")
+                    //div(id="desc desc3")
+                    div#book-desc
+                        p Name:
+                        p Author:
+                        p Year:
+        //div(id="line line2")
+        div#book-line
+            a(href="#")
+                //div(id="book book1")
+                div#book-line
+                    //div(id="ima image1")
+                    div#book-ima
+                        img(src="")
+                    //div(id="desc desc1")
+                    div#book-desc
+                        p Name:
+                        p Author:
+                        p Year:
+            a(href="#")   
+                //div(id="book book2")
+                div#book-book
+                    //div(id="ima image2")
+                    div#book-ima
+                        img(src="")
+                    //div(id="desc desc2")
+                    div#book-desc
+                        p Name:
+                        p Author:
+                        p Year:
+            a(href="#")   
+                //div(id="book book3")
+                div#book-book
+                    //div(id="ima image3")
+                    div#book-ima
+                        img(src="")
+                    //div(id="desc desc3")
+                    div#book-desc
+                        p Name:
+                        p Author:
+                        p Year:
+    button#book-next Next

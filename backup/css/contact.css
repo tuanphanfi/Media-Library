@@ -1,0 +1,13 @@
+h1#contact-h1
+{
+    margin: auto;
+}
+#contact-content
+{
+    margin: auto;
+}
+#contact-map
+{
+    margin: auto;
+    width: 60%;
+}
