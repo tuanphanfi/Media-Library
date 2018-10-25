@@ -25,6 +25,12 @@ app.get('/books', function(req, res){
 app.get('/contact', function(req, res){
     res.render('contact');
 });
+app.get('/about', function(req, res){
+    res.render('about');
+});
+app.get('/home', function(req, res){
+    res.render('home');
+});
 app.listen(5000, function(req,res){
     console.log('Running');
 });
