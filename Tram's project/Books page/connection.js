@@ -19,8 +19,11 @@ var app = express();
 // }~
 // });
 
-app.get('/', function(req, res){
-    res.render('index');
+app.get('/books', function(req, res){
+    res.render('books');
+});
+app.get('/contact', function(req, res){
+    res.render('contact');
 });
 app.listen(5000, function(req,res){
     console.log('Running');
