@@ -1,0 +1,8 @@
+GitHub:
+Movies: https://github.com/janaipakos/ghibliapi
+Books:  https://github.com/benoitvallon/100-best-books
+
+"Raw" JSON:
+
+Movies: https://raw.githubusercontent.com/benoitvallon/100-best-books/master/books.json
+Books:  https://raw.githubusercontent.com/janaipakos/ghibliapi/master/data.json

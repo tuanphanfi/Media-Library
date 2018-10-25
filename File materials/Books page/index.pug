@@ -1,0 +1,66 @@
+doctype html 
+html 
+    head
+        style 
+            include style.css
+    body 
+        div(id="header")
+        div(id="search")
+            input(type="text" placeholder="Search..")
+        div(id="sort")
+            button(onclick="myFunction()" class="dropbtn") Dropdown
+            div(id="myDropdown" class="dropdown-content")
+                a(href="#") From A to Z
+                a(href="#") From Z to A
+        div(id="content")
+            div(id="line line1")
+                a(href="#")
+                    div(id="book book1")
+                        div(id="ima image1")
+                            img(src="")
+                        div(id="desc desc1")
+                            p Name:
+                            p Author:
+                            p Year:
+                 a(href="#")   
+                    div(id="book book2")
+                        div(id="ima image2")
+                            img(src="")
+                        div(id="desc desc2")
+                            p Name:
+                            p Author:
+                            p Year:
+                a(href="#")
+                    div(id="book book3")
+                        div(id="ima image3")
+                            img(src="")
+                        div(id="desc desc3")
+                            p Name:
+                            p Author:
+                            p Year:
+            div(id="line line2")
+                a(href="#")
+                    div(id="book book4")
+                        div(id="ima image4")
+                            img(src="")
+                        div(id="desc desc4")
+                            p Name:
+                            p Author:
+                            p Year:
+                a(href="#")   
+                    div(id="book book5")
+                        div(id="ima image5")
+                            img(src="")
+                        div(id="desc desc5")
+                            p Name:
+                            p Author:
+                            p Year:
+                a(href="#")
+                    div(id="book book6")
+                        div(id="ima image6")
+                            img(src="")
+                        div(id="desc desc6")
+                            p Name:
+                            p Author:
+                            p Year:
+        button(id="next") Next
