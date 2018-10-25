@@ -4,11 +4,10 @@ html
         title About
         
     style
-        include about.css
+        include style.css
 
     body#about-body
-        div#about-header
-            h1 This is the header !
+        include header.pug
             
         div#about-content
             h1 About
@@ -16,5 +15,4 @@ html
             div#about-textbox
                 p Lorem blah blah blah
 
-        div#about-footer
-            h1 This is the Footer !
+        include footer.pug

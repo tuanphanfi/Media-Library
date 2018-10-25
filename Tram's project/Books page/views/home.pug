@@ -4,11 +4,12 @@ html
         title Home
         
     style
-        include home.css
+        include style.css
 
     body
-        div(id="header")
-            h1 This is the header !
+        //- div(id="header")
+        //-     h1 This is the header !
+        include header.pug
 
         div(id="content")
             //- h1 Home
@@ -44,5 +45,6 @@ html
                     div(class="item")
                         p An item here!
         
-        div(id="footer")
-            h1 This is the Footer !
+        //- div(id="footer")
+        //-     h1 This is the Footer !
+        include footer.pug
