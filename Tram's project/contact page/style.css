@@ -1,12 +1,12 @@
-h1
+.contact_h1
 {
     margin: auto;
 }
-#content
+.contact_content
 {
     margin: auto;
 }
-#map
+.contact_map
 {
     margin: auto;
     width: 60%;
