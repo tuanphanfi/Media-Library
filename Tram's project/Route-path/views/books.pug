@@ -1,23 +1,24 @@
 extends layout.pug 
 block content
-        div.books_search_tool
-            div.books_search
+        .books_search_tool
+            .books_search
                 input(type="text" placeholder="Search.." class="books_input")
             button(class="books_submit") Search
-        div.books_sort
+        .books_sort
             button('onclick'="myFunction()" class="books_dropbtn") Dropdown
-            div(id="books_myDropdown" class= "books_myDropdown")
+            #books_myDropdown.books_myDropdown
                 a(href="#") From A to Z
                 a(href="#") From Z to A
-        div.books_content
+        .books_content
             - for(var i=0; i<10; i++){
-                a(href="#")
-                div.books_book
-                    div.books_ima
-                         img(src="")
-                    div.books_desc
-                        p #{data[i].title} 
-                        p #{data[i].author}
+                a(href= "/"+ data[i]['_id'])
+                    .books_book
+                        .books_ima
+                            img(src="")
+                        .books_desc
+                            p Title:  #{data[i]['title']} 
+                            p Author: #{data[i]['author']}
+                            
             -} 
             
                 
@@ -27,70 +28,70 @@ block content
             
               
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: #{name2} 
             //-             p Author: #{author2}
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: #{name3} 
             //-             p Author: #{author3}
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: #{name4} 
             //-             p Author: #{author4}
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: #{name5} 
             //-             p Author: #{author5}
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: #{name6} 
             //-             p Author:#{author6}
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: #{name7} 
             //-             p Author:#{author7}
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: #{name8} 
             //-             p Author: #{author8}
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: 
             //-             p Author:
             //- a(href="#")
-            //-     div.books_book
-            //-         div.books_ima
+            //-     .books_book
+            //-         .books_ima
             //-              img(src="")
-            //-         div.books_desc
+            //-         .books_desc
             //-             p Name: 
             //-             p Author:
             
-        div.books_buttonnext
+        .books_buttonnext
             button(class="books_next") Next
         
         script.

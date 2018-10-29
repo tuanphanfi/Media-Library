@@ -40,7 +40,23 @@ app.get('/about', function (req, res) {
     res.render('about');
 });
 app.get('/', function (req, res) {
-    res.render('home',{
+    res.render('home',{data:data
+    });
+});
+app.get('/:id', function (req, res) {
+    var book_id = req.params.id;
+    var book_name="";
+    var book_author="";
+    var year="";
+    for(var i=0; i<data.length; i++){
+        if(data[i]._id==book_id){
+            book_name=data[i].title;
+            book_author=data[i].author;
+            year=data[i].year;
+            
+        }
+    }
+    res.render('detail',{name: book_name, author: book_author
     });
 });
 app.listen(5000, function (req, res) {

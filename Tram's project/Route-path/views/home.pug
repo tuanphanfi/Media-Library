@@ -5,18 +5,25 @@ block content
             
             div(class="home-box")
                 h2 Best watched
-                a(href ="#")
-                    div(class="home-item")
-                        p An item here!
-                a(href ="#")
-                    div(class="home-item")
-                        p An item here!
-                a(href ="#")
-                    div(class="home-item")
-                        p An item here!
-                a(href ="#")
-                    div(class="home-item")
-                        p An item here!
+                -for(var i=0; i<4;i++){
+                    a(href= "/"+ data[i]['_id'])
+                        .home-item
+                            p Title:  #{data[i]['title']} 
+                            p Author: #{data[i]['author']}
+                -}
+                //- a(href ="#")
+                //-     div(class="home-item")
+                //-         p An item here!
+
+                //- a(href ="#")
+                //-     div(class="home-item")
+                //-         p An item here!
+                //- a(href ="#")
+                //-     div(class="home-item")
+                //-         p An item here!
+                //- a(href ="#")
+                //-     div(class="home-item")
+                //-         p An item here!
                 
             
             div(class="home-box")
