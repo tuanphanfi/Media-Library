@@ -41,13 +41,13 @@ app.get('/', (req, res) => {
 
 var routeBookId;
 
-app.get('/book', (req, res) => {
+app.get('/books', (req, res) => {
     var bookArray = myArray;
 
-    res.render('book', { bookArray });
+    res.render('books', { bookArray });
 });
 
-app.get('/book/:id', function (req, res) {
+app.get('/books/:id', function (req, res) {
     routeBookId = req.params.id;
     console.log(routeBookId);
     res.redirect('/book-desc');
