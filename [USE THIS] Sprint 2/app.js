@@ -46,7 +46,7 @@ const express = require('express');
 const app = express();
 
 //setting view engine as pug
-app.set('view engine', 'pug');
+
 
 // app.get('/', (req, res) => {
 //     res.locals.id = aBook['id'],
