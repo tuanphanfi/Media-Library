@@ -2,18 +2,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
 
-//output object
-var aBook = {
-    id: '',
-    author: '',
-    country: '',
-    imageLink: '',
-    link: '',
-    pages: '',
-    title: '',
-    year: '',
-}
-
 //output total array 
 var myArray = [];
 
@@ -24,72 +12,84 @@ MongoClient.connect(url, {
     var dbo = db.db("myBooks");
     dbo.collection("books").find({}).toArray((err, result) => {
         if (err) throw err;
-        //get value from dbs into express
-        //myArray = result;
+        myArray = result;
         
-        aBook['id'] = result[0]['_id'];
-        aBook['author'] = result[0]['author'];
-        aBook['country'] = result[0]['country'];
-        aBook['imageLink'] = result[0]['imageLink'];
-        aBook['link'] = result[0]['link'];
-        aBook['pages'] = result[0]['pages'];
-        aBook['title'] = result[0]['title'];
-        aBook['year'] = result[0]['year'];
-
-
         db.close();
     });
 });
 
+
+
+/******************
+ * Express NPM
+ *****************/
 //get express module
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
 //setting view engine as pug
+app.set('view engine', 'pug');
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static('public'));
 
 
-// app.get('/', (req, res) => {
-//     res.locals.id = aBook['id'],
-//     res.locals.author = aBook['author'],
-//     res.locals.country = aBook['country'],
-//     res.locals.imageLink = aBook['imageLink'],
-//     res.locals.link = aBook['link'],
-//     res.locals.pages = aBook['pages'],
-//     res.locals.title = aBook['title'],
-//     res.locals.year = aBook['year'],
-//     res.render('index');
+app.get('/', (req, res) => {
+    var bookArray = myArray;
+    res.render('index', { bookArray });
+});
+
+var routeBookId;
+
+app.get('/book', (req, res) => {
+    var bookArray = myArray;
+
+    res.render('book', { bookArray });
+});
+
+app.get('/book/:id', function (req, res) {
+    routeBookId = req.params.id;
+    console.log(routeBookId);
+    res.redirect('/book-desc');
+});
+
+
+// app.get('/book/:id', function (req, res) {
+//     routeBookId = req.params.id;
+//     console.log(routeBookId);
+//     res.redirect('/book-desc');
 // });
 
-app.get('/', (req,res)=>{
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact');
+});
+
+app.get('/book-desc', (req, res) => {
+    var bookArray = myArray;
+    var bookId = routeBookId;
+    console.log(bookArray[0]);
+    res.render('book-desc', { bookArray, bookId });
+});
+
+app.get('/test', (req, res) => {
+    var bookArray = myArray;
+    var bookId = routeBookId;
+
+    console.log(bookArray[0]);
+
+
+    res.render('test', { bookArray, bookId });
+});
+
+app.get('/test1', (req, res) => {
+   
     
-    res.render('index');
+
 });
-
-app.get('/books', (req,res)=>{
-    res.render('books.pug');
-});
-
-
-app.get('/books/book1', (req,res)=>{
-    res.locals.id = aBook['id'],
-    res.locals.author = aBook['author'],
-    res.locals.country = aBook['country'],
-    res.locals.imageLink = aBook['imageLink'],
-    res.locals.link = aBook['link'],
-    res.locals.pages = aBook['pages'],
-    res.locals.title = aBook['title'],
-    res.locals.year = aBook['year'],
-    res.render('book1.pug');
-});
-
-app.get('/about', (req,res)=>{
-    res.render('about.pug');
-});
-
-app.get('/contact', (req,res)=>{
-    res.render('contact.pug');
-});
-
 
 
 app.listen(3000, (req, res) => {
