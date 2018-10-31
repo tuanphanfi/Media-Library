@@ -1,21 +1,116 @@
-.contact_content
-{
-    margin: auto;
-    width: 40%;
-    /* display: block; */
-    /* padding: 20px;
-    text-align: center; */
+/*--------------------------------HEADER - NA-------------------------------------------------*/
+header{
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 10px 10px;
 }
-/* .contact_map
-{
-    margin: auto;
-    width: 80%;
-} */
+header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li{
+    list-style-type: none;
+    float: left;
+    background-color: #b93e3e;
+    border-radius: 15px 15px 0px 0px;
+    margin: 0.5px;
+}
+
+li  a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #fff;
+    color: #333;
+    border-radius: 15px 15px 0px 0px;
+}
+/*--------------------------------HOME - CHUONG-------------------------------------------------*/
+#home-body{
+    border: 5px solid red;
+    height: auto;
+   
+    height: 1100px;
+    width: 1000px;
+    margin: 0 auto 0;
+    font-family:Sans-serif, "Lucia Console";
+}
 
 
+#home-header{
+    display: block;
+    position: relative;
+    border: 2px solid yellow;
+}
 
-/* Book */
+#home-content, #home-textbox{
+    border-collapse: collapse;
+}
 
+#home-content{
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 75%;
+    border: 1px solid salmon;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.home-box{
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    height: 260px;
+    height: 33%;
+    width: auto;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+h1#home-h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.home-item{
+    display: inline-block;
+    position: relative;
+    height: 60%;
+    width: 20%;
+    border: 1px solid yellowgreen;
+    margin: 2%;
+    text-align: center;
+}
+
+#home-footer{
+    display: block;
+    position: relative;
+    border: 2px solid yellow;
+}
+
+/*--------------------------------BOOKS - TRAM-------------------------------------------------*/
 .books_search-tool{
     width: 100%;
 }
@@ -161,198 +256,100 @@
     width: 20%;
 }
 
-/*****
-Header - Na
-*****/
-header{
-  overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 10px 10px;
-}
-header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
-  border-radius: 4px;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li{
-  list-style-type: none;
-  float: left;
-  background-color: #b93e3e;
-  border-radius: 15px 15px 0px 0px;
-  margin: 0.5px;
-}
-
-li  a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #fff;
-  color: #333;
-  border-radius: 15px 15px 0px 0px;
-}
-
-
-/*****
-Footer - Na
-*****/
-footer{
-  display: flex !important;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  overflow: hidden;
-  background-color: #b93e3e;
-  padding: 10px 10px;
-  color: #fff;
-}
-footer i {
-  color:#fff;
-  margin:5px;
-}
-.footer-socialmedia{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-right: 25px;
-}
-
-/*--HomePage--*/
-#home-body{
-  border: 5px solid red;
-  height: auto;
- 
-  height: 1100px;
-  width: 1000px;
-  margin: 0 auto 0;
-  font-family:Sans-serif, "Lucia Console";
-}
-
-
-#home-header{
-  display: block;
-  position: relative;
-  border: 2px solid yellow;
-}
-
-#home-content, #home-textbox{
-  border-collapse: collapse;
-}
-
-#home-content{
-  display: block;
-  position: relative;
-  width: 90%;
-  height: 75%;
-  border: 1px solid salmon;
-  margin-left: auto;
-  margin-right: auto;
-  
-}
-
-.home-box{
-  display: block;
-  position: relative;
-  margin-top: 20px;
-  height: 260px;
-  height: 33%;
-  width: auto;
-  border: 1px solid black;
-  padding: 20px;
-}
-
-h1#home-h1{
-  text-align: center;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.home-item{
-  display: inline-block;
-  position: relative;
-  height: 60%;
-  width: 20%;
-  border: 1px solid yellowgreen;
-  margin: 2%;
-  text-align: center;
-}
-
-#home-footer{
-  display: block;
-  position: relative;
-  border: 2px solid yellow;
-}
-
-/*--About--*/
+/*--------------------------------ABOUT - CHUONG-------------------------------------------------*/
 #about-body{
-  border: 5px solid red;
-  height: auto;
-  
-  height: 1100px;
-  width: 1000px;
-  margin: 0 auto 0;
-  font-family: Sans-serif, "Lucia Console";
+    border: 5px solid red;
+    height: auto;
+    
+    height: 1100px;
+    width: 1000px;
+    margin: 0 auto 0;
+    font-family: Sans-serif, "Lucia Console";
 }
 
 .about-textbox-img p{
-  text-align:center;
-  font-size: 21px;
-  padding: 10px;
+    text-align:center;
+    font-size: 21px;
+    padding: 10px;
 }
 #about-content, #about-textbox{
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 #about-header{
-  display: block;
-  position: relative;
-  border: 2px solid yellow;
+    display: block;
+    position: relative;
+    border: 2px solid yellow;
 }
 
 #about-content{
-  display: block;
-  position: relative;
-  width: 90%;
-  height: 75%;
-  border: 1px solid salmon;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 75%;
+    border: 1px solid salmon;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #about-textbox{
-  display: block;
-  position: relative;
-  height:70%;
-  width: auto;
-  border: 1px solid black;
-  padding: 20px;
+    display: block;
+    position: relative;
+    height:70%;
+    width: auto;
+    border: 1px solid black;
+    padding: 20px;
 }
 
 #about-footer{
-  display: block;
-  position: relative;
-  border: 2px solid yellow;
+    display: block;
+    position: relative;
+    border: 2px solid yellow;
 }
 
 #about-h1{
-  text-align: center;
-  font-size: 40px;
-  font-weight: bold;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
 }
+
+/*--------------------------------CONTACT - TRAM-------------------------------------------------*/
+.contact_content
+{
+    margin: auto;
+    width: 40%;
+    /* display: block; */
+    /* padding: 20px;
+    text-align: center; */
+}
+/* .contact_map
+{
+    margin: auto;
+    width: 80%;
+} */
+
+
+/*--------------------------------FOOTER - NA-------------------------------------------------*/
+footer{
+    display: flex !important;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #b93e3e;
+    padding: 10px 10px;
+    color: #fff;
+}
+footer i {
+    color:#fff;
+    margin:5px;
+}
+.footer-socialmedia{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 25px;
+}
+
+
+
+

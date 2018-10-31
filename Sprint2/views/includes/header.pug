@@ -1,14 +1,12 @@
 doctype html
 html(lang="en")
     head
+        link(href='css/style.css', rel='stylesheet')
+        //css link for book-desc/:id page, as the css is located 1 folder upper
+        link(href='../css/style.css', rel='stylesheet')
+
         link(href='https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', rel='stylesheet')
         link(href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
-
-        link(href='css/style-autocompiled.css', rel='stylesheet')
-        //- link(href='css/style.css', rel='stylesheet')
-
-        //- //css link for book-desc/:id page, as the css is located 1 folder upper
-        //- link(href='../css/style.css', rel='stylesheet')
     body
 
         header.main-header
