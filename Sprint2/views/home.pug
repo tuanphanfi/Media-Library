@@ -8,7 +8,7 @@ block content
             h2 Best watched
                 .home-box-content
                     -for(var i=0;i<4;i++){
-                        a(href="/books/"+bookArray[i]['_id'])
+                        a(href="/book-desc/"+bookArray[i]['_id'])
                             .home-item
                                 //- .books_ima
                                 img(src=bookArray[i]['imageLink'])

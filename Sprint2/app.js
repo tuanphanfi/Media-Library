@@ -40,29 +40,22 @@ app.get('/', (req, res) => {
 });
 
 /*--------------------Books page and Book-desc--------------------*/
-//Taking book id on clicks
-var routeBookId;
-
 app.get('/books', (req, res) => {
     var bookArray = myArray;
-
     res.render('books', { bookArray });
 });
-var testint = 0;
-app.get('/books/:id', function (req, res) {
-    //Test if the page get reloaded for each section
-    testint = testint + 1;
-    console.log(testint);
     
     routeBookId = req.params.id;
-    // console.log(routeBookId);
-    res.redirect('/book-desc');
-});
 
-app.get('/book-desc', (req, res) => {
+//When clicking the image, activate the link
+app.get('/book-desc/:id', (req, res) => {
     var bookArray = myArray;
-    var bookId = routeBookId;
-    // console.log(bookArray[0]);
+    //Taking book id when an image clicked
+    var bookId = req.params.id;
+    
+    //Checking if the id is taken
+    console.log(bookId);
+    
     res.render('book-desc', { bookArray, bookId });
 });
 

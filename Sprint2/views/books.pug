@@ -11,7 +11,7 @@ block content
                 a(href="#") From Z to A
         .books_content
             -for(var i=0; i<10;i++){
-                a(href="/books/"+bookArray[i]['_id'])
+                a(href="/book-desc/"+bookArray[i]['_id'])
                     .books_book
                         .books_ima
                             img(src=bookArray[i].imageLink class="books-image")
