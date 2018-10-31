@@ -44,8 +44,6 @@ app.get('/books', (req, res) => {
     var bookArray = myArray;
     res.render('books', { bookArray });
 });
-    
-    routeBookId = req.params.id;
 
 //When clicking the image, activate the link
 app.get('/book-desc/:id', (req, res) => {
