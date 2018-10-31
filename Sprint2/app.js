@@ -48,17 +48,21 @@ app.get('/books', (req, res) => {
 
     res.render('books', { bookArray });
 });
-
+var testint = 0;
 app.get('/books/:id', function (req, res) {
+    //Test if the page get reloaded for each section
+    testint = testint + 1;
+    console.log(testint);
+    
     routeBookId = req.params.id;
-    console.log(routeBookId);
+    // console.log(routeBookId);
     res.redirect('/book-desc');
 });
 
 app.get('/book-desc', (req, res) => {
     var bookArray = myArray;
     var bookId = routeBookId;
-    console.log(bookArray[0]);
+    // console.log(bookArray[0]);
     res.render('book-desc', { bookArray, bookId });
 });
 
