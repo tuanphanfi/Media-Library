@@ -1,4 +1,4 @@
-/*--HomePage--*/
+/*--------------------------------HOME - CHUONG-------------------------------------------------*/
 #home-body{
     border: 5px solid red;
     height: auto;
@@ -64,10 +64,11 @@ h1#home-h1{
     border: 2px solid yellow;
 }
 
-/*--About--*/
+
+/*--------------------------------ABOUT - CHUONG-------------------------------------------------*/
 #about-body{
     border: 5px solid red;
-    height: auto;
+    /*height: auto;*/
     
     height: 1100px;
     width: 1000px;
