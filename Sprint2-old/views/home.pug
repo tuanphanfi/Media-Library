@@ -1,0 +1,35 @@
+extend layout.pug
+block content
+
+    //- h1 Home
+    
+    .home-box
+        .home-box-title 
+            h2 Best watched
+                .home-box-content
+                    -for(var i=0;i<4;i++){
+                        a(href=showRe[i]['_id'])
+                            .home-item
+                                //- .books_ima
+                                img(src=showRe[i]['imageLink'])
+                                //- .books_desc
+                                h4 Author: #{showRe[i]['author']}
+                                h4 Title: #{showRe[i]['title']}
+                    -}  
+                
+    
+    .home-box
+        .home-box-title
+            h2 Top sellers
+                .home-box-content
+                    -for(var i=5;i<9;i++){
+                        a(href=showRe[i]['_id'])
+                            .home-item
+                                img(src=showRe[i]['imageLink'])
+                                //- .books_desc
+                                h4 Author: #{showRe[i]['author']}
+                                h4 Title: #{showRe[i]['title']}
+
+                    -}
+        
+        
