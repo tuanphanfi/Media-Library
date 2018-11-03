@@ -1,0 +1,28 @@
+extends layout.pug 
+block content
+        .books_search-tool
+            div.books_search
+                input(type="text" placeholder="Search.." class="books_input")
+            button(class="books_submit") Search
+        .books_sort
+            button('onclick'="myFunction()" class="books_dropbtn") Dropdown
+            #books_myDropdown.books_myDropdown
+                a(href="#") From A to Z
+                a(href="#") From Z to A
+        .books_content
+            -for(var i=0; i<10;i++){
+                a(href="/book-desc/"+bookArray[i]['_id'])
+                    .books_book
+                        .books_ima
+                            img(src=bookArray[i].imageLink class="books-image")
+                        .books_desc
+                            p=bookArray[i].title 
+                            p=bookArray[i].author            
+            -}
+            
+        button(class="books_next") Next
+        
+        script.
+            function myFunction() {
+                document.getElementById("books_myDropdown").classList.toggle("show");
+            }

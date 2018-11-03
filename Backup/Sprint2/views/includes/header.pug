@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        link(href='css/style.css', rel='stylesheet')
+        //css link for book-desc/:id page, as the css is located 1 folder upper
+        link(href='../css/style.css', rel='stylesheet')
+
+        link(href='https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css', rel='stylesheet')
+        link(href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
+    body
+
+        header.main-header
+            div.container 
+                h1 MEDIA LIBRARY 
+                nav#top-menu-nav
+                    ul#top-menu.nav
+                    li 
+                        a(href='/') Home
+                    li 
+                        a(href='/books') Books
+                    li
+                        a(href='/about') About
+                    li
+                        a(href='/contact') Contact
