@@ -1,0 +1,23 @@
+extends layout.pug
+block content
+    #home-content
+        //- h1 Home
+        .home-box
+            h2 Best watched
+            -for(var i = 0; i < 4; i++){
+                a(href='book/' + bookArray[i]['_id'])
+                    .home-item
+                        img(src=bookArray[i]['imageLink'], alt="book")
+                        h1= bookArray[i]['title']
+            -}
+         
+        .home-box
+            h2 Top sellers
+            -for(var i = 4; i < 8; i++){
+                a(href='book/' +bookArray[i]['_id'])
+                    .home-item
+                        img(src=bookArray[i]['imageLink'], alt="book")
+                        h1= bookArray[i]['title']
+            -}
+            
+        
