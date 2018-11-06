@@ -4,19 +4,48 @@ const url = "mongodb://localhost:27017/";
 
 //output total array 
 var myArray = [];
+var AZArray=[];
+var ZAArray=[];
+var AscYearArray=[];
+var DesYearArray=[];
 
-MongoClient.connect(url, {
-    useNewUrlParser: true
-}, (err, db) => {
-    if (err) throw err;
-    var dbo = db.db("myBooks");
-    dbo.collection("books").find({}).toArray((err, result) => {
+    MongoClient.connect(url, {
+        useNewUrlParser: true
+    }, (err, db) => {
         if (err) throw err;
-        myArray = result;
-        
-        db.close();
+        var dbo = db.db("myBooks");
+        dbo.collection("books").find({}).toArray((err, result) => {
+            if (err) throw err;
+            myArray = result;
+            console.log(myArray[0]);
+            db.close();
+        });
+        dbo.collection("books").find({}).sort({title: 1}).toArray((err, result) => {
+            if (err) throw err;
+            AZArray = result;
+            console.log(AZArray[0]);
+            
+            db.close();
+        });
+        dbo.collection("books").find({}).sort({title: -1}).toArray((err, result) => {
+            if (err) throw err;
+            ZAArray = result;
+            
+            db.close();
+        });
+            dbo.collection("books").find({}).sort({year: 1}).toArray((err, result) => {
+                if (err) throw err;
+                AscYearArray = result;
+                
+                db.close();
+            });
+            dbo.collection("books").find({}).sort({year: -1}).toArray((err, result) => {
+                if (err) throw err;
+                DesYearArray = result;
+                
+                db.close();
+        });
     });
-});
 
 
 /******************
@@ -67,7 +96,22 @@ app.get('/contact', (req, res) => {
     res.render('contact');
 });
 
-
+app.post("/books",(req,res)=>{
+    var bookArray=[];
+    if(req.body.button=="AZ"){
+        bookArray=AZArray;
+    }
+    else if(req.body.button=="ZA"){
+        bookArray=ZAArray;
+    }
+    else if(req.body.button=="AscYear"){
+        bookArray=AscYearArray;
+    }
+    else{
+        bookArray=DesYearArray;
+    }
+    res.render("books",{bookArray});
+})
 /*-------------------------------------------------------------------------------------------------------- */
 app.listen(3000, (req, res) => {
     console.log("Running on localhost:3000");
