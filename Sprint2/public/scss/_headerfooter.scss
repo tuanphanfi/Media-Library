@@ -1,51 +1,80 @@
 /*--------------------------------HEADER - NA-------------------------------------------------*/
+*{
+    margin:0;
+    padding:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 header{
+    // background-image: url(https://i.pinimg.com/originals/b3/6a/5f/b36a5fdd8e2bcdf148157caffe01fcbb.png);
+    // -webkit-background-size: cover;
+    // background-size: cover;
+    // background-position: center center;
+    // height: 100vh;
+
     overflow: hidden;
     background-color: #f1f1f1;
     padding: 10px 10px;
+    
+   
 }
-header a {
-    float: left;
-    color: black;
-    text-align: center;
-    padding: 12px;
+#top-menu li a{
     text-decoration: none;
-    font-size: 18px; 
-    line-height: 25px;
-    border-radius: 4px;
-  }
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-li{
-    list-style-type: none;
-    float: left;
-    background-color: #b93e3e;
-    border-radius: 15px 15px 0px 0px;
-    margin: 0.5px;
-}
-
-li  a {
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    padding: 0 25px;
+    font-size: 14px;
+    line-height: 30px;
+    position: relative;
+    z-index: 1;
+
+
 }
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    background-color: #fff;
-    color: #333;
-    border-radius: 15px 15px 0px 0px;
+#top-menu li{
+    list-style: none;
+    display: inline-block;
+    
 }
+#top-menu-nav{
+    padding: 10px;
+}
+nav{
+    position: relative;
+    padding: 10px 20px 10px 10px;
+    text-align: right;
+    z-index: 1;
+    background:#b93e3e;
+    margin: 0 auto;
+    width:100%;
 
-
+}
+#top-menu li a:hover{
+    background:#fff;
+    color:tomato;
+}
+nav:before{
+    position: absolute;
+    content: '';
+    left:0;
+    top:100%;
+    border-top: 10px solid #b93e3e;
+    border-right: 10px solid #b93e3e;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+nav:after{
+    position:absolute;
+    content:'';
+    border-top: 10px solid#b93e3e;
+    border-left: 10px solid #b93e3e;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    top: 100%;
+    right: 0;
+}
 /*--------------------------------FOOTER - NA-------------------------------------------------*/
 footer{
     display: flex !important;
