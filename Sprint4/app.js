@@ -3,7 +3,9 @@ const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
 
 //output total array 
-var myArray = [];
+//Using global variable to access it through the whole project 
+global.myArray = [];
+
 var AZArray=[];
 var ZAArray=[];
 var AscYearArray=[];
@@ -66,93 +68,9 @@ app.use(express.static('public'));
 /*************
     ROUTING        
 *************/
+var router = require('./routes');
+app.use(router);
 
-app.get('/', (req, res) => {
-    var bookArray = myArray;
-    const user_email = req.cookies.user_email;
-    res.render('index', { bookArray, user_email });
-});
-
-/*--------------------Books page and Book-desc--------------------*/
-app.get('/books', (req, res) => {
-    var bookArray = myArray;
-    res.render('books', { bookArray });
-});
-
-app.post("/books",(req,res)=>{
-    var bookArray=[];
-    if(req.body.button=="AZ"){
-        bookArray=AZArray;
-    }
-    else if(req.body.button=="ZA"){
-        bookArray=ZAArray;
-    }
-    else if(req.body.button=="AscYear"){
-        bookArray=AscYearArray;
-    }
-    else{
-        bookArray=DesYearArray;
-    }
-    res.render("books",{bookArray});
-})
-
-//When clicking the image, activate the link
-app.get('/book-desc/:id', (req, res) => {
-    var bookArray = myArray;
-    //Taking book id when an image clicked
-    var bookId = req.params.id;
-    
-    //Checking if the id is taken
-    console.log(bookId);
-    
-    res.render('book-desc', { bookArray, bookId });
-});
-
-app.get('/about', (req, res) => {
-    res.render('about');
-});
-
-app.get('/contact', (req, res) => {
-    res.render('contact');
-});
-
-/**********************
- * USER LOG-IN REGISTER
- *********************/
-
-app.get('/register', (req, res) => {
-
-
-    res.render('subs/users/register', );
-});
-
-app.post('/register', (req, res) => {
-
-
-    res.render('subs/users/registerSuccessful', );
-});
-
-
-app.get('/log-in', (req, res) => {
-
-    
-    res.render('subs/users/log-in', );
-});
-
-app.post('/log-in', (req, res) => {
-
-    res.cookie('user_email', req.body['user_email']);
-    console.log(req.body['user_email']);
-    console.log(req.body['user_password']);
-    res.redirect('/');
-});
-
-
-
-app.get('/log-out', (req, res) => {
-    res.clearCookie('user_email');
-    res.redirect('/');
-});
 
 /*******************
  * HANDLING ERRORS *
@@ -172,5 +90,5 @@ app.use((err, req, res, next) => {
 
 /*-------------------------------------------------------------------------------------------------------- */
 app.listen(8000, (req, res) => {
-    console.log("Running on localhost:3000");
+    console.log("Running on localhost:8000");
 })
