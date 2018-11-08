@@ -55,45 +55,28 @@ var DesYearArray=[];
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 //setting view engine as pug
 app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(cookieParser());
 app.use(express.static('public'));
 
-/*---------------------------------------------------------------------------------------------*/
+/*************
+    ROUTING        
+*************/
 
 app.get('/', (req, res) => {
     var bookArray = myArray;
-    res.render('home', { bookArray });
+    const user_email = req.cookies.user_email;
+    res.render('home', { bookArray, user_email });
 });
 
 /*--------------------Books page and Book-desc--------------------*/
 app.get('/books', (req, res) => {
     var bookArray = myArray;
     res.render('books', { bookArray });
-});
-
-//When clicking the image, activate the link
-app.get('/book-desc/:id', (req, res) => {
-    var bookArray = myArray;
-    //Taking book id when an image clicked
-    var bookId = req.params.id;
-    
-    //Checking if the id is taken
-    console.log(bookId);
-    
-    res.render('book-desc', { bookArray, bookId });
-});
-
-/*---------------------------------------------------------------------------*/
-
-app.get('/about', (req, res) => {
-    res.render('about');
-});
-
-app.get('/contact', (req, res) => {
-    res.render('contact');
 });
 
 app.post("/books",(req,res)=>{
@@ -112,6 +95,81 @@ app.post("/books",(req,res)=>{
     }
     res.render("books",{bookArray});
 })
+
+//When clicking the image, activate the link
+app.get('/book-desc/:id', (req, res) => {
+    var bookArray = myArray;
+    //Taking book id when an image clicked
+    var bookId = req.params.id;
+    
+    //Checking if the id is taken
+    console.log(bookId);
+    
+    res.render('book-desc', { bookArray, bookId });
+});
+
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
+app.get('/contact', (req, res) => {
+    res.render('contact');
+});
+
+/**********************
+ * USER LOG-IN REGISTER
+ *********************/
+
+app.get('/register', (req, res) => {
+
+
+    res.render('subs/users/register', );
+});
+
+app.post('/register', (req, res) => {
+
+
+    res.render('subs/users/registerSuccessful', );
+});
+
+
+app.get('/log-in', (req, res) => {
+
+    
+    res.render('subs/users/log-in', );
+});
+
+app.post('/log-in', (req, res) => {
+
+    res.cookie('user_email', req.body['user_email']);
+    console.log(req.body['user_email']);
+    console.log(req.body['user_password']);
+    res.redirect('/');
+});
+
+
+
+app.get('/log-out', (req, res) => {
+    res.clearCookie('user_email');
+    res.redirect('/');
+});
+
+/*******************
+ * HANDLING ERRORS *
+ *******************/
+
+app.use((req, res, next) => {
+    const err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    res.render('subs/error');
+});
+
 /*-------------------------------------------------------------------------------------------------------- */
 app.listen(8000, (req, res) => {
     console.log("Running on localhost:3000");
