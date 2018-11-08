@@ -70,7 +70,7 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     var bookArray = myArray;
     const user_email = req.cookies.user_email;
-    res.render('home', { bookArray, user_email });
+    res.render('index', { bookArray, user_email });
 });
 
 /*--------------------Books page and Book-desc--------------------*/
