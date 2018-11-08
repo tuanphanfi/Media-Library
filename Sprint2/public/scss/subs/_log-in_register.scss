@@ -1,0 +1,84 @@
+$white: rgb(255,255,255);
+$dark-white: rgb(222,222,222);
+$red: rgb(185, 62, 62);
+$dark-red: rgb(135, 32, 32);
+
+.signIn-signUp_heading{
+    text-align: center;
+    // color: tomato;
+    margin: 50px 0 50px 0;
+}
+
+form.signIn-signUp_form{
+    margin: 0 25%;
+    width: 50%;
+    box-sizing: border-box;
+    
+    
+    label{
+        font-size: 1.6em;
+        // margin: 0 0 120px 0;
+        font-weight: 600;
+        display: block;
+        
+        
+    }
+    
+    label.sign-up_checkbox-label{
+        font-size: 1.2em;
+        // margin: 50px 20px;
+        display: inline;
+
+    }
+
+    input[type="checkbox"]{
+        margin: 0 8px 8px 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    {
+        width: 100%;
+        line-height: 20px;
+        height: 50px;
+        font-size: 1.5em;
+        // color: tomato;
+        box-sizing: border-box;
+        margin: 0 0 30px 0 ;
+    }
+
+    
+
+    .signIn-signUp_button{
+        
+        display: block;
+        width: 100%;
+        min-height: 60px;
+        padding: 10px 20px;
+        margin: 20px 0px 100px;
+        background-color: $red;
+        color: $white;
+        border: none;
+        font-weight: 600;
+        font-size: 1.7em;
+        border-radius:  1%;
+        box-shadow: 0px 10px $dark-red;
+        box-sizing: border-box;        
+        &:hover{
+            opacity: 0.9;
+        }
+    
+        &:focus{
+            outline: none;
+            
+        }
+    
+        &:active{
+            opacity: 1;
+            box-shadow: 0px 2px $dark-red;
+            color: $dark-white;
+    
+        }
+    }
+}
