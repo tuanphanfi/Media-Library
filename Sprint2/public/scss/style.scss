@@ -1,5 +1,13 @@
-@import'_headerfooter';
-@import'_homeabout';
-@import'_bookcontact';
+// ==========================================================================
+// Global Imports
+// ==========================================================================
 
-@import 'subs/_log-in_register'
+@import '_bookcontact';
+
+@import '_homeabout';
+@import '_book-desc';
+
+
+@import 'components/_header';
+@import 'components/_footer';
+@import 'subs/_log-in_register';
