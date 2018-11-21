@@ -1,55 +1,25 @@
-//get mongodb module
-const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://localhost:27017/";
+//-------------------------Connect to db via Mongoose----------------------
+//get mongoose module----------
+var mongoose = require('mongoose');
 
-//output total array 
-//Using global variable to access it through the whole project 
-global.myArray = [];
+//connect--------
+mongoose.connect('mongodb://localhost/myBooks', {useNewUrlParser: true});
 
-var AZArray=[];
-var ZAArray=[];
-var AscYearArray=[];
-var DesYearArray=[];
-
-    MongoClient.connect(url, {
-        useNewUrlParser: true
-    }, (err, db) => {
-        if (err) throw err;
-        var dbo = db.db("myBooks");
-        dbo.collection("books").find({}).toArray((err, result) => {
-            if (err) throw err;
-            myArray = result;
-            console.log(myArray[0]);
-            db.close();
-        });
-        dbo.collection("books").find({}).sort({title: 1}).toArray((err, result) => {
-            if (err) throw err;
-            AZArray = result;
-            console.log(AZArray[0]);
-            
-            db.close();
-        });
-        dbo.collection("books").find({}).sort({title: -1}).toArray((err, result) => {
-            if (err) throw err;
-            ZAArray = result;
-            
-            db.close();
-        });
-            dbo.collection("books").find({}).sort({year: 1}).toArray((err, result) => {
-                if (err) throw err;
-                AscYearArray = result;
-                
-                db.close();
-            });
-            dbo.collection("books").find({}).sort({year: -1}).toArray((err, result) => {
-                if (err) throw err;
-                DesYearArray = result;
-                
-                db.close();
-        });
-    });
+//check for errors--------
+let database = mongoose.connection;
+database.on('error', function(err){
+    console.log(err);
+});
 
 
+database.once('open', function(){
+    console.log("Connected to database!")
+});
+
+//Bring in Models-----------------------
+var bookSchema = require('./models/bookSchema');
+
+//-------------------------------------------------------------------------------
 /******************
  * Express NPM
  *****************/

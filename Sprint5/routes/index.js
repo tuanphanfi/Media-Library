@@ -1,47 +1,81 @@
 //-------------------Create the route handler-------------------------
 var express=require('express');
 var router=express.Router();
+//Bring in Models-----------------------
+var bookSchema = require('../models/bookSchema');
 
 //--------------------Define the routes----------------------------------
 router.get('/', (req, res) => {
-    var bookArray = myArray;
-    const user_email = req.cookies.user_email;
-    res.render('index', { bookArray, user_email });
+    bookSchema.find({}, (err, bookArray)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            const user_email = req.cookies.user_email;
+            res.render('index', { bookArray, user_email });
+            console.log("Render index page");
+        }
+    })
 });
 
 /*--------------------Books page and Book-desc--------------------*/
 router.get('/books', (req, res) => {
-    var bookArray = myArray;
-    res.render('books', { bookArray });
+    bookSchema.find({}, (err, bookArray)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.render('books', { bookArray });
+            console.log("Render books page")
+        }
+    }) 
 });
 
+//-------------------------Sorting books---------------------------------
 router.post("/books",(req,res)=>{
-    var bookArray=[];
     if(req.body.button=="AZ"){
-        bookArray=AZArray;
+        bookSchema.find({}).sort({title:1}).exec((err, bookArray)=>{
+            res.render("books", {bookArray});
+            console.log("Sorted a-z");
+        })
     }
     else if(req.body.button=="ZA"){
-        bookArray=ZAArray;
+        bookSchema.find({}).sort({title:-1}).exec((err, bookArray)=>{
+            res.render("books", {bookArray});
+            console.log("Sorted z-a");
+        })
     }
     else if(req.body.button=="AscYear"){
-        bookArray=AscYearArray;
+        bookSchema.find({}).sort({year:1}).exec((err, bookArray)=>{
+            res.render("books", {bookArray});
+            console.log("Sorted asc year");
+        })
     }
-    else{
-        bookArray=DesYearArray;
+    else if(req.body.button=="DesYear"){
+        bookSchema.find({}).sort({year:-1}).exec((err, bookArray)=>{
+            res.render("books", {bookArray});
+            console.log("Sorted des year");
+        })
     }
-    res.render("books",{bookArray});
 })
-
+//--------------------------------------------------------------------------------------
 //When clicking the image, activate the link
 router.get('/book-desc/:id', (req, res) => {
-    var bookArray = myArray;
-    //Taking book id when an image clicked
-    var bookId = req.params.id;
-    
-    //Checking if the id is taken
-    console.log(bookId);
-    
-    res.render('book-desc', { bookArray, bookId });
+    bookSchema.find({}, (err, bookArray)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            //Taking book id when an image clicked
+            var bookId = req.params.id;
+            
+            //Checking if the id is taken
+            console.log(bookId);
+            
+            res.render('book-desc', { bookArray, bookId });
+            console.log("Render book-desc page");
+        }
+    })
 });
 /*---------------------------------------------------------------------------*/
 router.get('/about', (req, res) => {
