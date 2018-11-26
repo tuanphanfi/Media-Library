@@ -1,6 +1,8 @@
 //-------------------Create the route handler-------------------------
 var express=require('express');
 var router=express.Router();
+var bodyParser=require('body-parser');
+var nodemailer=require('nodemailer');
 //Bring in Models-----------------------
 var bookSchema = require('../models/bookSchema');
 var userSchema = require('../models/userSchema');
@@ -97,6 +99,31 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
+    //Send Email Confirmation
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'medialibrarylamk@gmail.com',
+          pass: 'M19LamkFi'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'medialibrarylamk@gmail.com',
+        to: req.body.email,
+        subject: 'Media Library Confirmation',
+        text: 'Congratulation! Your account has been created.'
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+    
+    // Push New User Data to Database
     var userData = new userSchema();
 
     userData.name = req.body.name;
@@ -105,7 +132,10 @@ router.post('/register', (req, res) => {
     userData.confirmPassword = req.body.confirmPassword;
 
 
+
     userSchema.create(userData);
+
+    
     res.render('subs/users/registerSuccessful');
 });
 
