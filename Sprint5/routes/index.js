@@ -3,7 +3,7 @@ var express=require('express');
 var router=express.Router();
 //Bring in Models-----------------------
 var bookSchema = require('../models/bookSchema');
-
+var userSchema = require('../models/userSchema');
 //--------------------Define the routes----------------------------------
 router.get('/', (req, res) => {
     bookSchema.find({}, (err, bookArray)=>{
@@ -97,24 +97,39 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
+    var userData = new userSchema();
+
+    userData.name = req.body.name;
+    userData.email = req.body.email;
+    userData.password = req.body.password;
+    userData.confirmPassword = req.body.confirmPassword;
 
 
-    res.render('subs/users/registerSuccessful', );
+    userSchema.create(userData);
+    res.render('subs/users/registerSuccessful');
 });
 
 
 router.get('/log-in', (req, res) => {
 
-    
+
     res.render('subs/users/log-in', );
 });
 
 router.post('/log-in', (req, res) => {
+    userSchema.find({}, (err, users) => {
+        console.log('User 0',users[0]);
+        if (err) {
+            console.log(err);
+        } else {
+            res.cookie('user_email', req.body['user_email']);
+            console.log(req.body['user_email']);
+            console.log(req.body['user_password']);
+            res.redirect('/');        
+        }
+    });
 
-    res.cookie('user_email', req.body['user_email']);
-    console.log(req.body['user_email']);
-    console.log(req.body['user_password']);
-    res.redirect('/');
+    
 });
 
 router.get('/log-out', (req, res) => {
