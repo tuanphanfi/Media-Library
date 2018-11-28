@@ -1,6 +1,9 @@
 
 /*--------------------------------FOOTER - NA-------------------------------------------------*/
 footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     display: flex !important;
     flex-direction: row-reverse;
     justify-content: space-between;
