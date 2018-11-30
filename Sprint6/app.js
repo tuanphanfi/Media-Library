@@ -2,6 +2,10 @@
 //get mongoose module----------
 var mongoose = require('mongoose');
 
+//debug -- (node:6368) DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+//mongoose set
+mongoose.set('useCreateIndex', true);
+
 //connect--------
 mongoose.connect('mongodb://localhost/myBooks', {useNewUrlParser: true});
 
