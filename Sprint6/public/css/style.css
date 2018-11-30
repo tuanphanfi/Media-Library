@@ -715,6 +715,7 @@ button.header_button-logout:active {
   opacity: 1;
   box-shadow: 0px 2px #872020;
   color: #dedede;
+  margin: 1px 0 0 0;
 }
 
 .header_user-logout_anchor {
