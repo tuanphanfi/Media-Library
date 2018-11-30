@@ -1,20 +1,22 @@
 //-------------------Create the route handler-------------------------
-var express=require('express');
-var router=express.Router();
-var bodyParser=require('body-parser');
-var nodemailer=require('nodemailer');
+var express = require('express');
+var router = express.Router();
+var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
 //Bring in Models-----------------------
 var bookSchema = require('../models/bookSchema');
 var userSchema = require('../models/userSchema');
 //--------------------Define the routes----------------------------------
 router.get('/', (req, res) => {
-    bookSchema.find({}, (err, bookArray)=>{
-        if(err){
+    bookSchema.find({}, (err, bookArray) => {
+        if (err) {
             console.log(err);
-        }
-        else{
+        } else {
             const user_email = req.cookies.user_email;
-            res.render('index', { bookArray, user_email });
+            res.render('index', {
+                bookArray,
+                user_email
+            });
             console.log("Render index page");
         }
     })
@@ -22,40 +24,54 @@ router.get('/', (req, res) => {
 
 /*--------------------Books page and Book-desc--------------------*/
 router.get('/books', (req, res) => {
-    bookSchema.find({}, (err, bookArray)=>{
-        if(err){
+    bookSchema.find({}, (err, bookArray) => {
+        if (err) {
             console.log(err);
-        }
-        else{
-            res.render('books', { bookArray });
+        } else {
+            res.render('books', {
+                bookArray
+            });
             console.log("Render books page")
         }
-    }) 
+    })
 });
 
 //-------------------------Sorting books---------------------------------
-router.post("/books",(req,res)=>{
-    if(req.body.button=="AZ"){
-        bookSchema.find({}).sort({title:1}).exec((err, bookArray)=>{
-            res.render("books", {bookArray});
+router.post("/books", (req, res) => {
+    if (req.body.button == "AZ") {
+        bookSchema.find({}).sort({
+            title: 1
+        }).exec((err, bookArray) => {
+            res.render("books", {
+                bookArray
+            });
             console.log("Sorted a-z");
         })
-    }
-    else if(req.body.button=="ZA"){
-        bookSchema.find({}).sort({title:-1}).exec((err, bookArray)=>{
-            res.render("books", {bookArray});
+    } else if (req.body.button == "ZA") {
+        bookSchema.find({}).sort({
+            title: -1
+        }).exec((err, bookArray) => {
+            res.render("books", {
+                bookArray
+            });
             console.log("Sorted z-a");
         })
-    }
-    else if(req.body.button=="AscYear"){
-        bookSchema.find({}).sort({year:1}).exec((err, bookArray)=>{
-            res.render("books", {bookArray});
+    } else if (req.body.button == "AscYear") {
+        bookSchema.find({}).sort({
+            year: 1
+        }).exec((err, bookArray) => {
+            res.render("books", {
+                bookArray
+            });
             console.log("Sorted asc year");
         })
-    }
-    else if(req.body.button=="DesYear"){
-        bookSchema.find({}).sort({year:-1}).exec((err, bookArray)=>{
-            res.render("books", {bookArray});
+    } else if (req.body.button == "DesYear") {
+        bookSchema.find({}).sort({
+            year: -1
+        }).exec((err, bookArray) => {
+            res.render("books", {
+                bookArray
+            });
             console.log("Sorted des year");
         })
     }
@@ -63,18 +79,20 @@ router.post("/books",(req,res)=>{
 //--------------------------------------------------------------------------------------
 //When clicking the image, activate the link
 router.get('/book-desc/:id', (req, res) => {
-    bookSchema.find({}, (err, bookArray)=>{
-        if(err){
+    bookSchema.find({}, (err, bookArray) => {
+        if (err) {
             console.log(err);
-        }
-        else{
+        } else {
             //Taking book id when an image clicked
             var bookId = req.params.id;
-            
+
             //Checking if the id is taken
             console.log(bookId);
-            
-            res.render('book-desc', { bookArray, bookId });
+
+            res.render('book-desc', {
+                bookArray,
+                bookId
+            });
             console.log("Render book-desc page");
         }
     })
@@ -103,26 +121,26 @@ router.post('/register', (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'medialibrarylamk@gmail.com',
-          pass: 'M19LamkFi'
+            user: 'medialibrarylamk@gmail.com',
+            pass: 'M19LamkFi'
         }
-      });
-      
-      var mailOptions = {
+    });
+
+    var mailOptions = {
         from: 'medialibrarylamk@gmail.com',
         to: req.body.email,
         subject: 'Media Library Confirmation',
         text: 'Congratulation! Your account has been created.'
-      };
-      
-      transporter.sendMail(mailOptions, function(error, info){
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          console.log(error);
+            console.log(error);
         } else {
-          console.log('Email sent: ' + info.response);
+            console.log('Email sent: ' + info.response);
         }
-      });
-    
+    });
+
     // Push New User Data to Database
     var userData = new userSchema();
 
@@ -135,7 +153,7 @@ router.post('/register', (req, res) => {
 
     userSchema.create(userData);
 
-    
+
     res.render('subs/users/registerSuccessful');
 });
 
@@ -148,18 +166,25 @@ router.get('/log-in', (req, res) => {
 
 router.post('/log-in', (req, res) => {
     userSchema.find({}, (err, users) => {
-        console.log('User 0',users[0]);
         if (err) {
             console.log(err);
         } else {
-            res.cookie('user_email', req.body['user_email']);
-            console.log(req.body['user_email']);
-            console.log(req.body['user_password']);
-            res.redirect('/');        
+    
+            for(var i = 0; i < users.length; i++){
+                if (users[i]['email'] == req.body['user_email'] &&
+                users[i]['password'] == req.body['user_password'])
+                {
+                    res.cookie('user_email', req.body['user_email']);
+                    console.log(users[i]);
+                    res.redirect('/');        
+                } else {
+                    console.log('Please correct your email');
+                    // res.redirect('/log-in');
+                }
+            }
+            
         }
     });
-
-    
 });
 
 router.get('/log-out', (req, res) => {
