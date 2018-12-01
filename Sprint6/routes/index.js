@@ -75,6 +75,46 @@ router.post("/books", (req, res) => {
             console.log("Sorted des year");
         })
     }
+    if (req.body.book_search != null) {
+
+        bookSchema.textSearch(req.body.book_search, function (err, output) {
+            if (err) console.log(err);
+
+            var inspect = require('util').inspect;
+            console.log(inspect(output, { depth: null }));
+        });
+
+        //manually
+        var keyword = req.body.book_search.split(" ");
+        var include_arr=[];
+        bookSchema.find({}, (err, bookArray)=>{
+            if(err){
+                console.log(err);
+            }
+            else{
+                for(var i=0; i<bookArray.length;i++){
+                    for (var j=0;j<keyword.length;j++){
+                        if(bookArray[i]['title'].includes(keyword[j])|| bookArray[i]['author'].includes(keyword[j])||bookArray[i]['language'].includes(keyword[j])||bookArray[i]['year'].toString().includes(keyword[j])){
+                            include_arr[include_arr.length]=bookArray[i];
+                        }
+
+                    }
+
+                }
+        if(include_arr==null){
+            res.send("No book has the keyword '"+req.body.book_search+"'");
+        }
+        else{
+            res.render("books",{bookArray:include_arr});
+        console.log(typeof include_arr);
+        }
+            }
+
+        }) 
+
+
+    }
+    
 })
 //--------------------------------------------------------------------------------------
 //When clicking the image, activate the link

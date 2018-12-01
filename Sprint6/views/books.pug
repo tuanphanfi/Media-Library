@@ -2,8 +2,9 @@ extends layout.pug
 block content
         .books_search-tool
             div.books_search
-                input(type="text" placeholder="Search.." class="books_input")
-            button(class="books_submit") Search
+                form(action="/books", method="post")
+                    input(type="text" placeholder="Search.." class="books_input" name="book_search")
+                    button(class="books_submit" type="submit") Search
         .books_sort
             form(action="/books", method="post")
                 button(class="books_sortbtn" name="button" value="AZ") From A to Z
