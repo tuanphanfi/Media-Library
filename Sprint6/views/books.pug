@@ -4,6 +4,24 @@ block content
             div.books_search
                 form(action="/books", method="post")
                     input(type="text" placeholder="Search.." class="books_input" name="book_search")
+                    
+                    .books_check-box
+                        br
+                        input(type='radio', name='searchType', value='all', checked)
+                        | All
+                        br
+                        input(type='radio', name='searchType', value='title')
+                        |  Title
+                        br
+                        input(type='radio', name='searchType', value='author')
+                        |  Author
+                        br
+                        input(type='radio', name='searchType', value='language')
+                        |  Language
+                        br
+                        input(type='radio', name='searchType', value='year')
+                        |  Year
+                        br
                     button(class="books_submit" type="submit") Search
         .books_sort
             form(action="/books", method="post")

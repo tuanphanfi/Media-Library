@@ -87,19 +87,33 @@ router.post("/books", (req, res) => {
         //manually
         var keyword = req.body.book_search.split(" ");
         var include_arr=[];
+        var searchType= req.body.searchType;
         bookSchema.find({}, (err, bookArray)=>{
             if(err){
                 console.log(err);
             }
             else{
-                for(var i=0; i<bookArray.length;i++){
-                    for (var j=0;j<keyword.length;j++){
-                        if(bookArray[i]['title'].includes(keyword[j])|| bookArray[i]['author'].includes(keyword[j])||bookArray[i]['language'].includes(keyword[j])||bookArray[i]['year'].toString().includes(keyword[j])){
-                            include_arr[include_arr.length]=bookArray[i];
+                if(searchType=="all"){
+                    for(var i=0; i<bookArray.length;i++){
+                        for (var j=0;j<keyword.length;j++){
+                            if(bookArray[i]['title'].toLowerCase().includes(keyword[j])|| bookArray[i]['author'].toLowerCase().includes(keyword[j])||bookArray[i]['language'].toLowerCase().includes(keyword[j])||bookArray[i]['year'].toString().toLowerCase().includes(keyword[j])){
+                                include_arr[include_arr.length]=bookArray[i];
+                            }
+    
                         }
-
+    
                     }
-
+                }
+                else{
+                    for(var i=0; i<bookArray.length;i++){
+                        for (var j=0;j<keyword.length;j++){
+                            if(bookArray[i][searchType].toString().toLowerCase().includes(keyword[j])){
+                                include_arr[include_arr.length]=bookArray[i];
+                            }
+    
+                        }
+    
+                    }
                 }
         if(include_arr==null){
             res.send("No book has the keyword '"+req.body.book_search+"'");
