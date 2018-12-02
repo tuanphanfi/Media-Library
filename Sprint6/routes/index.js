@@ -77,12 +77,12 @@ router.post("/books", (req, res) => {
     }
     if (req.body.book_search != null) {
 
-        bookSchema.textSearch(req.body.book_search, function (err, output) {
-            if (err) console.log(err);
+        // bookSchema.textSearch(req.body.book_search, function (err, output) {
+        //     if (err) console.log(err);
 
-            var inspect = require('util').inspect;
-            console.log(inspect(output, { depth: null }));
-        });
+        //     var inspect = require('util').inspect;
+        //     console.log(inspect(output, { depth: null }));
+        // });
 
         //manually
         var keyword = req.body.book_search.split(" ");
@@ -106,7 +106,7 @@ router.post("/books", (req, res) => {
         }
         else{
             res.render("books",{bookArray:include_arr});
-        console.log(typeof include_arr);
+        //console.log(typeof include_arr);
         }
             }
 
