@@ -85,7 +85,7 @@ router.post("/books", (req, res) => {
         // });
 
         //manually
-        var keyword = req.body.book_search.split(" ");
+        var keyword = req.body.book_search.toLowerCase().split(" ");
         var include_arr=[];
         var searchType= req.body.searchType;
         bookSchema.find({}, (err, bookArray)=>{
