@@ -82,3 +82,32 @@ header{
 .night-mode a {
     color: #e5e5e5;
   }
+
+button#night-mode{
+    background-color: rgb(185, 62, 62);
+    padding: 10px;  
+    box-shadow: 00px 5px rgb(155, 32, 32);
+    border: none;
+    border-radius: 2%;
+
+    
+    &:hover{
+        opacity: 0.8;
+    }
+
+    &:active{
+        margin: 1px 0 0 0;
+        box-shadow: 0px 2px rgb(155, 32, 32);
+        border: none;
+    }
+
+    &:focus{
+        outline: none;
+    }
+
+    a{
+        text-decoration: none;
+        font-weight: 900;
+        color: white;
+    }
+}

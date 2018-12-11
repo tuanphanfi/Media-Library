@@ -419,6 +419,30 @@ header {
   color: #e5e5e5;
 }
 
+button#night-mode {
+  background-color: #b93e3e;
+  padding: 10px;
+  box-shadow: 0px 5px #9b2020;
+  border: none;
+  border-radius: 2%;
+}
+button#night-mode:hover {
+  opacity: 0.8;
+}
+button#night-mode:active {
+  margin: 1px 0 0 0;
+  box-shadow: 0px 2px #9b2020;
+  border: none;
+}
+button#night-mode:focus {
+  outline: none;
+}
+button#night-mode a {
+  text-decoration: none;
+  font-weight: 900;
+  color: white;
+}
+
 /*--------------------------------FOOTER - NA-------------------------------------------------*/
 footer {
   width: 100%;
