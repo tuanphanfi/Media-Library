@@ -95,15 +95,6 @@ form.signIn-signUp_form{
 
 .header_button-wrapper{
     min-width: 10%;
-    overflow: hidden;
-    display:inline-block;
-    // margin: auto 0  0 462px; 
-    //position: fixed;
-    right: 150px;
-    top: 80px;
-    box-sizing: border-box;  
-
-    
     
     form{
         display: inline-block;
@@ -164,15 +155,11 @@ form.signIn-signUp_form{
     AFTER USER LOGIN
 ********************/
 //position
-#header_user-wrapper{
-    display:inline-block;
-    position: fixed;
-    right: 140px;
-    top: 65px;
-}
 
 #header_user-wrapper{
     color: white;    
+    position: absolute;
+    top: 70px;
 
     &:hover{
         opacity: 0.8;
@@ -208,10 +195,7 @@ form.signIn-signUp_form{
 }
 
 #header_user-logout {
-    position: fixed;
-    right: 140px;
     max-width: 120px;
-
     // position: absolute; //DANGEROUS //SHOULD NOT USE
     background-color: $red;
     
@@ -246,9 +230,9 @@ form.signIn-signUp_form{
 }
 
 
+
 button.header_button-logout{
     
-    // margin: 23px 0 0 0;
     padding: 15px 18px;
     background-color: $red;
     color: $white;
@@ -275,15 +259,4 @@ button.header_button-logout{
     }
 }
 
-.header_user-logout_anchor{
-    padding: 0px 212px;
-    color: blue;
-    border: 2px solid white;
-}
 
-
-nav{
-    
-  overflow: hidden;
-  position: relative;
-}
