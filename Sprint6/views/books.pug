@@ -36,8 +36,9 @@ block content
                         .books_ima
                             img(src=bookArray[i].imageLink class="books-image")
                         .books_desc
-                            h5=bookArray[i].title 
-                            p=bookArray[i].author            
+                            h5 #{bookArray[i].title} (#{bookArray[i]['year']}) 
+                            p=bookArray[i].author
+                            
             -}
             
         button(class="books_next") Next

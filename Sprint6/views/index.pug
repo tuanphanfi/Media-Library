@@ -26,8 +26,9 @@ block content
                                 //- .books_ima
                                 img(src=bookArray[i]['imageLink'])
                                 //- .books_desc
+                                h5 #{bookArray[i].title} (#{bookArray[i]['year']}) 
                                 h4 Author: #{bookArray[i]['author']}
-                                h4 Title: #{bookArray[i]['title']}
+                                
                     -}  
                 
     
@@ -40,8 +41,8 @@ block content
                             .home-item
                                 img(src=bookArray[i]['imageLink'])
                                 //- .books_desc
+                                h5 #{bookArray[i].title} (#{bookArray[i]['year']}) 
                                 h4 Author: #{bookArray[i]['author']}
-                                h4 Title: #{bookArray[i]['title']}
 
                     -}
         
