@@ -12,7 +12,22 @@ var userSchema = require('../models/userSchema');
 ********************/
 
 //function for url '/' & '/books'
-function handlerURL(){
+// function handlerURL(){
+//     bookSchema.find({}, (err, bookArray) => {
+//         if (err) {
+//             console.log(err);
+//         } else {
+//             const user_email = req.cookies.user_email;
+//             res.render('index', {
+//                 bookArray,
+//                 user_email
+//             });
+//             console.log("Render index page");
+//         }
+//     })
+// }
+
+router.get('/', (req, res, next) => {
     bookSchema.find({}, (err, bookArray) => {
         if (err) {
             console.log(err);
@@ -25,11 +40,7 @@ function handlerURL(){
             console.log("Render index page");
         }
     })
-}
-
-router.get('/', (req, res, next) => {
-    handlerURL();
-    next();
+    // next();
 });
 
 /*--------------------Books page and Book-desc--------------------*/
