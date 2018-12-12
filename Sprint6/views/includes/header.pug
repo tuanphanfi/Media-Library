@@ -26,16 +26,20 @@ html(lang="en")
                         li
                             a(href='/contact') Contact
                         li        
+                            //- after login
                             if user_email
                                 #header_user-wrapper(onclick= 'toggleThis()')
                                     img.header_userAvatar(src='userImages/meo.png')
                                     h1= user_email
                                     img.header_down-arrow(src='userImages/down-arrow.png')
                                     #header_user-logout
-                                        a.header_user-logout_anchor(href="#") View profile
-                                    
+                                        //- view profile
+                                        form(action="/view-profile")
+                                            button.header_user-logout_anchor(type="submit") View profile
+                                        //- log out button
                                         form(action="/log-out")    
                                             button.header_button-logout(type="submit") Log Out
+                            //- login form
                             else
                                 .header_button-wrapper
                                     form(action="/log-in")    

@@ -1,7 +1,5 @@
-//-------------------Create the route handler-------------------------
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
 var nodemailer = require('nodemailer');
 //Bring in Models-----------------------
 var bookSchema = require('../models/bookSchema');
@@ -11,44 +9,28 @@ var userSchema = require('../models/userSchema');
  * Define the routes
 ********************/
 
-//function for url '/' & '/books'
-// function handlerURL(){
-//     bookSchema.find({}, (err, bookArray) => {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             const user_email = req.cookies.user_email;
-//             res.render('index', {
-//                 bookArray,
-//                 user_email
-//             });
-//             console.log("Render index page");
-//         }
-//     })
-// }
-
 router.get('/', (req, res, next) => {
+    res.locals.user_email = req.cookies.user_email;      
     bookSchema.find({}, (err, bookArray) => {
         if (err) {
             console.log(err);
         } else {
-            const user_email = req.cookies.user_email;
             res.render('index', {
                 bookArray,
-                user_email
             });
             console.log("Render index page");
         }
     })
-    // next();
 });
 
-/*--------------------Books page and Book-desc--------------------*/
+
 router.get('/books', (req, res) => {
+    res.locals.user_email = req.cookies.user_email;
     bookSchema.find({}, (err, bookArray) => {
         if (err) {
             console.log(err);
         } else {
+            
             res.render('books', {
                 bookArray
             });
@@ -57,8 +39,10 @@ router.get('/books', (req, res) => {
     })
 });
 
-//-------------------------Sorting books---------------------------------
+
 router.post("/books", (req, res) => {
+
+//sorting
     if (req.body.button == "AZ") {
         bookSchema.find({}).sort({
             title: 1
@@ -96,14 +80,9 @@ router.post("/books", (req, res) => {
             console.log("Sorted des year");
         })
     }
+
+//searching
     if (req.body.book_search != null) {
-
-        // bookSchema.textSearch(req.body.book_search, function (err, output) {
-        //     if (err) console.log(err);
-
-        //     var inspect = require('util').inspect;
-        //     console.log(inspect(output, { depth: null }));
-        // });
 
         //manually
         var keyword = req.body.book_search.split(" ");
@@ -141,7 +120,6 @@ router.post("/books", (req, res) => {
         }
         else{
             res.render("books",{bookArray:include_arr});
-        //console.log(typeof include_arr);
         }
             }
 
@@ -151,9 +129,11 @@ router.post("/books", (req, res) => {
     }
     
 })
-//--------------------------------------------------------------------------------------
-//When clicking the image, activate the link
+
+
+//handling each single BOOK
 router.get('/book-desc/:id', (req, res) => {
+    res.locals.user_email = req.cookies.user_email;
     bookSchema.find({}, (err, bookArray) => {
         if (err) {
             console.log(err);
@@ -172,12 +152,14 @@ router.get('/book-desc/:id', (req, res) => {
         }
     })
 });
-/*---------------------------------------------------------------------------*/
+
 router.get('/about', (req, res) => {
+    res.locals.user_email = req.cookies.user_email;
     res.render('about');
 });
 
 router.get('/contact', (req, res) => {
+    res.locals.user_email = req.cookies.user_email;
     res.render('contact');
 });
 
@@ -186,12 +168,11 @@ router.get('/contact', (req, res) => {
  *********************/
 
 router.get('/register', (req, res) => {
-
-
     res.render('subs/users/register', );
 });
 
 router.post('/register', (req, res) => {
+
     //Send Email Confirmation
     var transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -216,26 +197,19 @@ router.post('/register', (req, res) => {
         }
     });
 
-    // Push New User Data to Database
+    //Create a new user
+        // Push New User Data to Database
     var userData = new userSchema();
 
     userData.name = req.body.name;
     userData.email = req.body.email;
     userData.password = req.body.password;
     userData.confirmPassword = req.body.confirmPassword;
-
-
-
     userSchema.create(userData);
-
-
     res.render('subs/users/registerSuccessful');
 });
 
-
 router.get('/log-in', (req, res) => {
-
-
     res.render('subs/users/log-in', );
 });
 
@@ -254,10 +228,8 @@ router.post('/log-in', (req, res) => {
                     res.redirect('/');        
                 } else {
                     console.log('Please correct your email');
-                    // res.redirect('/log-in');
                 }
             }
-            
         }
     });
 });
@@ -266,8 +238,6 @@ router.get('/log-out', (req, res) => {
     res.clearCookie('user_email');
     res.redirect('/');
 });
-
-/*---------------------------------------------------------------------------*/
 
 //Mounting the module into the main app.js
 module.exports = router;

@@ -631,30 +631,16 @@ form.signIn-signUp_form .signIn-signUp_button:active {
   max-width: 120px;
   background-color: #b93e3e;
 }
-#header_user-logout a, #header_user-logout form {
+#header_user-logout form {
   padding: 0;
   margin: 0;
-  min-height: 30px;
   display: block;
   text-align: center;
-  font-size: 1.5em;
   box-sizing: border-box;
 }
-#header_user-logout a {
-  padding: 0px 21px;
-  margin: 4px 0 2px 0;
-  border: 2px solid white;
-}
-#header_user-logout a:hover {
-  background-color: red;
-}
-#header_user-logout hr {
-  width: 100%;
-  color: white;
-  background-color: white;
-}
 
-button.header_button-logout {
+button.header_button-logout, button.header_user-logout_anchor {
+  min-width: 200px;
   padding: 15px 18px;
   background-color: #b93e3e;
   color: white;
@@ -664,13 +650,13 @@ button.header_button-logout {
   border: 2px solid white;
   box-shadow: 0px 5px #872020;
 }
-button.header_button-logout:hover {
+button.header_button-logout:hover, button.header_user-logout_anchor:hover {
   opacity: 0.9;
 }
-button.header_button-logout:focus {
+button.header_button-logout:focus, button.header_user-logout_anchor:focus {
   outline: none;
 }
-button.header_button-logout:active {
+button.header_button-logout:active, button.header_user-logout_anchor:active {
   opacity: 1;
   box-shadow: 0px 2px #872020;
   color: #dedede;
