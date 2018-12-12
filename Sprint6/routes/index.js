@@ -6,8 +6,13 @@ var nodemailer = require('nodemailer');
 //Bring in Models-----------------------
 var bookSchema = require('../models/bookSchema');
 var userSchema = require('../models/userSchema');
-//--------------------Define the routes----------------------------------
-router.get('/', (req, res) => {
+
+/********************
+ * Define the routes
+********************/
+
+//function for url '/' & '/books'
+function handlerURL(){
     bookSchema.find({}, (err, bookArray) => {
         if (err) {
             console.log(err);
@@ -20,6 +25,11 @@ router.get('/', (req, res) => {
             console.log("Render index page");
         }
     })
+}
+
+router.get('/', (req, res, next) => {
+    handlerURL();
+    next();
 });
 
 /*--------------------Books page and Book-desc--------------------*/
