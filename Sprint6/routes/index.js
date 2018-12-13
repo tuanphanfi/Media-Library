@@ -163,6 +163,14 @@ router.get('/contact', (req, res) => {
     res.render('contact');
 });
 
+
+/**********************
+**********************
+* USER USER USER USER
+* USER USER USER USER
+**********************
+*********************/
+
 /**********************
  * USER LOG-IN REGISTER
  *********************/
@@ -236,8 +244,45 @@ router.post('/log-in', (req, res) => {
 
 router.get('/log-out', (req, res) => {
     res.clearCookie('user_email');
+    
     res.redirect('/');
 });
+
+//user-profile
+router.get('/view-profile', (req, res) => {
+    const user_email = req.cookies.user_email;    
+    userSchema.findOne({'email':user_email}, (err, users) => {
+        if (err) {
+            console.log(err);
+        } else {
+            
+            const user_password = users['password'];
+            res.render('subs/users/user-profile', {user_password, user_email});        
+        }
+    })
+    
+})
+
+router.post('/view-profile', (req, res) => {
+    const user_email = req.cookies.user_email;    
+    userSchema.findOne({'email':user_email}, (err, users) => {
+        if (err) {
+            console.log(err);
+        } else {
+            users['password'] = req.body.password;
+            users['confirmPassword'] = req.body.password;
+            const user_password = users['password'];
+            users.save(function (err) {
+                if (err)
+                {
+                    // TODO: Handle the error!
+                }
+                // res.json('yep');
+            });
+            res.render('subs/users/user-profile', {user_password, user_email});        
+        }
+    })
+})
 
 //Mounting the module into the main app.js
 module.exports = router;
